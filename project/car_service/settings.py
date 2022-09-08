@@ -31,6 +31,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'blog.apps.BlogConfig',
+    'company_info.apps.CompanyInfoConfig',
+    'garage_services.apps.GarageServicesConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -38,9 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    'blog.apps.BlogConfig',
-    'company_info.apps.CompanyInfoConfig',
-    'garge_services.apps.ServicesConfig',
 ]
 
 MIDDLEWARE = [
