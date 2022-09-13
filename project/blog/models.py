@@ -1,3 +1,8 @@
 from django.db import models
+from garage_services.models import Vehicle, Brand
 
-# Create your models here.
+class Category(models.Model):
+    pass
+
+class Article(models.Model):
+    pass
