@@ -154,7 +154,7 @@ class Transmission(models.Model):
     ]
     model =  models.CharField(max_length=255, verbose_name='Модель')
     type = models.CharField(max_length=255, choices=TRANSMISSION_CHOICES, verbose_name='Тип КПП')
-    vendor = models.CharField(max_length=255, verbose_name='Производитель')
+    vendor = models.CharField(max_length=255, blank=True, null=True, verbose_name='Производитель')
     vehicle = models.ManyToManyField(Vehicle, on_delete=models.CASCADE, related_name='vehicle_transmissions', blank=True, null=True, verbose_name='Кузов')
 
     def __str__(self):
