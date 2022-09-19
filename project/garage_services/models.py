@@ -5,9 +5,8 @@ from django.contrib.sites.models import Site
 from django.db import models
 
 
-class SEOservices(MPTTModel):
-    # Или стоит унаследовать от стандартных и добавлять вторым пунктом?
-    title = models.CharField(max_length=80, blank=True, null=True)
+class SEO(MPTTModel):
+    seo_title = models.CharField(max_length=80, blank=True, null=True)
     seo_description = models.CharField(max_length=255, blank=True, null=True)
     canonical_url = models.URLField(blank=True, null=True)
     meta_robots = models.CharField(max_length=50, blank=True, null=True)
@@ -17,7 +16,7 @@ class SEOservices(MPTTModel):
         abstract = True
 
 
-class Service(SEOservices):
+class Service(SEO):
     name = models.CharField(max_length=255, verbose_name='Название Услуги')
     slug = models.SlugField(max_length=255, unique=True)
     in_menu = models.BooleanField(default=True, verbose_name='Добавляем ли в меню?')
@@ -26,8 +25,11 @@ class Service(SEOservices):
     content = models.TextField(blank=True)
     icon = models.ImageField(upload_to='images/category/%Y/%m/%d/', blank=True, verbose_name='Иконка категории')
     parent = TreeForeignKey(
-        'self', on_delete=models.DO_NOTHING, null=True,
-        blank=True, related_name='child_category',
+        'self', 
+        on_delete=models.DO_NOTHING, 
+        null=True,
+        blank=True, 
+        related_name='child_category',
         verbose_name='Родительская услуга'
     )
     min_normochas = models.DecimalField(max_digits=19, decimal_places=2, verbose_name='Минимально нормочасов')
@@ -59,15 +61,26 @@ class Group(models.Model):
 
 class Brand(models.Model):
     site = models.ForeignKey(Site, blank=True, null=True, on_delete=models.CASCADE)
-    group = models.ForeignKey(Group, on_delete=models.CASCADE, blank=True, null=True, 
-                                related_name='group_brands', verbose_name='Концерн')
+    group = models.ForeignKey(
+        Group, 
+        on_delete=models.CASCADE, 
+        blank=True, 
+        null=True, 
+        related_name='group_brands', 
+        verbose_name='Концерн'
+    )
     name_ru = models.CharField(max_length=255, verbose_name='Название на русском')
     name_en = models.CharField(max_length=255, verbose_name='Название на английском')
     logo = models.ImageField(upload_to='image/logo/%Y/%m/%d/', verbose_name='Логотип марки')
     description = models.TextField(blank=True, verbose_name='Описание')
     services = TreeManyToManyField(Service, verbose_name='Улсуги')
-    price_normochas = models.DecimalField(max_digits=19, decimal_places=2, blank=True,
-                                            null=True, verbose_name='Стоимость нормочаса')
+    price_normochas = models.DecimalField(
+        max_digits=19, 
+        decimal_places=2, 
+        blank=True, 
+        null=True, 
+        verbose_name='Стоимость нормочаса'
+    )
     slug = models.SlugField(max_length=255, unique=True, blank=True, null=True)
 
     def __str__(self):
@@ -113,7 +126,7 @@ class Vehicle(models.Model):
         verbose_name_plural = 'Кузова'
 
 
-class ServicesVehicle(SEOservices):
+class ServicesVehicle(SEO):
     vehicle = models.ForeignKey(Vehicle, on_delete=models.CASCADE, related_name='vehicle_services', verbose_name='Кузов')
     service = models.ForeignKey(Service, on_delete=models.CASCADE, related_name='service_vehicles', verbose_name='Услуга')
     min_normochas = models.DecimalField(max_digits=19, decimal_places=2, verbose_name='Минимально нормочасов')
@@ -125,12 +138,12 @@ class ServicesVehicle(SEOservices):
 
 
 class Engine(models.Model):
-    FUEL_CHOICES = [
+    FUEL_CHOICES = (
         ('PETROL', 'Бензиновый'),
         ('DIESEL', 'Дизельный'),
         ('ELECTRIC', 'Электрический'),
         ('HYBRID', 'Гибридный')
-    ]
+    )
     model =  models.CharField(max_length=255, verbose_name='Модель')
     fuel = models.CharField(max_length=255, choices=FUEL_CHOICES, verbose_name='Тип двигателя')
     horse_power = models.DecimalField(max_digits=19, decimal_places=2, verbose_name='Лошадиных сил')
@@ -146,12 +159,12 @@ class Engine(models.Model):
 
 
 class Transmission(models.Model):
-    TRANSMISSION_CHOICES = [
+    TRANSMISSION_CHOICES = (
         ('MANUAL', 'МКПП'),
         ('AVTOMAT', 'АКПП'),
         ('ROBOT', 'Робот'),
         ('VARIATOR', 'Вариатор'),
-    ]
+    )
     model =  models.CharField(max_length=255, verbose_name='Модель')
     type = models.CharField(max_length=255, choices=TRANSMISSION_CHOICES, verbose_name='Тип КПП')
     vendor = models.CharField(max_length=255, blank=True, null=True, verbose_name='Производитель')
@@ -173,13 +186,13 @@ class Drive(models.Model):
         return self.model
 
     class Meta:
-        verbose_name = 'Коробка передач'
-        verbose_name_plural = 'Коробки передач'
+        verbose_name = 'Тип привода'
+        verbose_name_plural = 'Типы привода'
 
 
 class Lead(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True, verbose_name='Имя')
-    phone = models.IntegerField(max_length=10 , verbose_name='Номер телефона')
+    phone = models.IntegerField(max_length=11 , verbose_name='Номер телефона')
     url =  models.URLField(null=True, blank=True, verbose_name='Страница с которой пришла заявка')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
 
@@ -193,12 +206,12 @@ class Lead(models.Model):
 
 
 class ImageDesing(models.Model):
-    POSITION_CHOICES = [
+    POSITION_CHOICES = (
         ('FIRST', 'Первый экран'),
         ('FORM_1', 'Форма заявки 1'),
         ('WHY_ARE_WE', 'Мочему мы'),
         ('FORM_QUESTIONS', 'Остались вопросы')
-    ]
+    )
     image = models.ImageField(upload_to='image/desing/%Y/%m/%d/', verbose_name='Фото для дизайна')
     position = models.CharField(max_length=25, choices=POSITION_CHOICES, verbose_name='Место размещения')
     group = models.ManyToManyField(Group, on_delete=models.CASCADE, blank=True, null=True, verbose_name='Концерн')

@@ -1,6 +1,6 @@
 from django.db import models
 from mptt.models import TreeManyToManyField
-from garage_services.models import Vehicle, CarModel, ServicesVehicle, Service, SEOservices
+from garage_services.models import Vehicle, CarModel, ServicesVehicle, Service, SEO
 
 
 
@@ -31,7 +31,7 @@ class Tag(models.Model):
         verbose_name_plural = 'Теги'
 
 
-class Article(SEOservices):
+class Article(SEO):
     tile = models.CharField(max_length=255, verbose_name='Тайтл Записи')
     slug = models.SlugField(max_length=255, unique=True)
     content = models.TextField(verbose_name='Контент Записи')
@@ -41,10 +41,22 @@ class Article(SEOservices):
     categories = models.ManyToManyField(Category, verbose_name='Категории')
     tags = models.ManyToManyField(Tag, verbose_name='Теги')
     service = TreeManyToManyField(Service, blank=True, null=True, verbose_name='Услуги')
-    carmodel = models.ForeignKey(CarModel, on_delete=models.CASCADE, related_name='carmodel_articles',
-                                    blank=True, null=True, verbose_name='Модель')
-    vehicle = models.ForeignKey(Vehicle, on_delete=models.CASCADE, related_name='vehicle_articles',
-                                    blank=True, null=True, verbose_name='Кузов')
+    carmodel = models.ForeignKey(
+        CarModel, 
+        on_delete=models.CASCADE, 
+        related_name='carmodel_articles',
+        blank=True, 
+        null=True, 
+        verbose_name='Модель'
+    )
+    vehicle = models.ForeignKey(
+        Vehicle, 
+        on_delete=models.CASCADE, 
+        related_name='vehicle_articles',                         
+        blank=True, 
+        null=True, 
+        verbose_name='Кузов'
+    )
     service_vehicle = models.ForeignKey(ServicesVehicle, on_delete=models.CASCADE, related_name='servicevehicle_articles',
                                     blank=True, null=True, verbose_name='Кузов')
     
