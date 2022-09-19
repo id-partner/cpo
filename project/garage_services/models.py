@@ -4,7 +4,9 @@ from mptt.models import MPTTModel, TreeForeignKey,TreeManyToManyField
 from django.contrib.sites.models import Site
 from django.db import models
 
+
 class SEOservices(MPTTModel):
+    # Или стоит унаследовать от стандартных и добавлять вторым пунктом?
     title = models.CharField(max_length=80, blank=True, null=True)
     seo_description = models.CharField(max_length=255, blank=True, null=True)
     canonical_url = models.URLField(blank=True, null=True)
@@ -30,6 +32,9 @@ class Service(SEOservices):
     )
     min_normochas = models.DecimalField(max_digits=19, decimal_places=2, verbose_name='Минимально нормочасов')
 
+    def __str__(self):
+        return self.name
+
     class Meta:
         verbose_name = 'Услуга'
         verbose_name_plural = 'Услуги'
@@ -44,6 +49,9 @@ class Group(models.Model):
     services = TreeManyToManyField(Service, verbose_name='Улсуги')
     slug = models.SlugField(max_length=255, unique=True, blank=True, null=True)
 
+    def __str__(self):
+        return self.name_ru
+
     class Meta:
         verbose_name = 'Концерн'
         verbose_name_plural = 'Концерны'
@@ -51,14 +59,19 @@ class Group(models.Model):
 
 class Brand(models.Model):
     site = models.ForeignKey(Site, blank=True, null=True, on_delete=models.CASCADE)
-    group = models.ForeignKey(Group, on_delete=models.CASCADE, blank=True, null=True, related_name='group_brands', verbose_name='Концерн')
+    group = models.ForeignKey(Group, on_delete=models.CASCADE, blank=True, null=True, 
+                                related_name='group_brands', verbose_name='Концерн')
     name_ru = models.CharField(max_length=255, verbose_name='Название на русском')
     name_en = models.CharField(max_length=255, verbose_name='Название на английском')
     logo = models.ImageField(upload_to='image/logo/%Y/%m/%d/', verbose_name='Логотип марки')
     description = models.TextField(blank=True, verbose_name='Описание')
     services = TreeManyToManyField(Service, verbose_name='Улсуги')
-    price_normochas = models.DecimalField(max_digits=19, decimal_places=2, blank=True, null=True, verbose_name='Стоимость нормочаса')
+    price_normochas = models.DecimalField(max_digits=19, decimal_places=2, blank=True,
+                                            null=True, verbose_name='Стоимость нормочаса')
     slug = models.SlugField(max_length=255, unique=True, blank=True, null=True)
+
+    def __str__(self):
+        return self.name_ru
 
     class Meta:
         verbose_name = 'Марка'
@@ -73,6 +86,9 @@ class CarModel(models.Model):
     image_model = models.ImageField(upload_to='image/services/%Y/%m/%d/', verbose_name='Логотип концерна')
     services = TreeManyToManyField(Service, verbose_name='Услуги')
     slug = models.SlugField(max_length=255, unique=True)
+
+    def __str__(self):
+        return self.name_ru
 
 class Meta:
         verbose_name = 'Модель'
@@ -89,7 +105,10 @@ class Vehicle(models.Model):
     services = TreeManyToManyField(Service, verbose_name='Услуги')
     slug = models.SlugField(max_length=255, unique=True)
 
-class Meta:
+    def __str__(self):
+        return self.name
+
+    class Meta:
         verbose_name = 'Кузов'
         verbose_name_plural = 'Кузова'
 
@@ -105,10 +124,71 @@ class ServicesVehicle(SEOservices):
         verbose_name_plural = 'Точные услуги'
 
 
-# Двигателя
-# Коробки передач
-# Привод
-# Заявки
+class Engine(models.Model):
+    FUEL_CHOICES = [
+        ('PETROL', 'Бензиновый'),
+        ('DIESEL', 'Дизельный'),
+        ('ELECTRIC', 'Электрический'),
+        ('HYBRID', 'Гибридный')
+    ]
+    model =  models.CharField(max_length=255, verbose_name='Модель')
+    fuel = models.CharField(max_length=255, choices=FUEL_CHOICES, verbose_name='Тип двигателя')
+    horse_power = models.DecimalField(max_digits=19, decimal_places=2, verbose_name='Лошадиных сил')
+    torque = models.DecimalField(max_digits=19, decimal_places=2, verbose_name='Лошадиных сил')
+    vehicle = models.ManyToManyField(Vehicle, on_delete=models.CASCADE, related_name='vehicle_engines', blank=True, null=True, verbose_name='Кузов')
+
+    def __str__(self):
+        return self.model
+
+    class Meta:
+        verbose_name = 'Двигатель'
+        verbose_name_plural = 'Двигатели'
+
+
+class Transmission(models.Model):
+    TRANSMISSION_CHOICES = [
+        ('MANUAL', 'МКПП'),
+        ('AVTOMAT', 'АКПП'),
+        ('ROBOT', 'Робот'),
+        ('VARIATOR', 'Вариатор'),
+    ]
+    model =  models.CharField(max_length=255, verbose_name='Модель')
+    type = models.CharField(max_length=255, choices=TRANSMISSION_CHOICES, verbose_name='Тип КПП')
+    vendor = models.CharField(max_length=255, verbose_name='Производитель')
+    vehicle = models.ManyToManyField(Vehicle, on_delete=models.CASCADE, related_name='vehicle_transmissions', blank=True, null=True, verbose_name='Кузов')
+
+    def __str__(self):
+        return self.model
+
+    class Meta:
+        verbose_name = 'Коробка передач'
+        verbose_name_plural = 'Коробки передач'
+    
+
+class Drive(models.Model):
+    type = models.CharField(max_length=255, verbose_name='Тип привода')
+    vehicle = models.ManyToManyField(Vehicle, on_delete=models.CASCADE, related_name='vehicle_transmissions', blank=True, null=True, verbose_name='Кузов')
+
+    def __str__(self):
+        return self.model
+
+    class Meta:
+        verbose_name = 'Коробка передач'
+        verbose_name_plural = 'Коробки передач'
+
+
+class Lead(models.Model):
+    name = models.CharField(max_length=255, blank=True, null=True, verbose_name='Имя')
+    phone = models.IntegerField(max_length=10 , verbose_name='Номер телефона')
+    url =  models.URLField(null=True, blank=True, verbose_name='Страница с которой пришла заявка')
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Заявка'
+        verbose_name_plural = 'Заявки'
 
 
 
