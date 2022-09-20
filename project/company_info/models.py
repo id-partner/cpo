@@ -32,13 +32,13 @@ class Review(models.Model):
     rating = models.FloatField(verbose_name='Рейтинг', blank=True, null=True)
     photo = models.ImageField(upload_to='images/company_info/%Y/%m/%d/', blank=True, null=True, verbose_name='Фото автора')
     source = models.ForeignKey(SourceReview, on_delete=models.CASCADE, related_name='source_reviews', blank=True, null=True, verbose_name='Кузов')
-    service = TreeManyToManyField(Service, blank=True, null=True, verbose_name='Услуги')
-    carmodel = models.ForeignKey(CarModel, on_delete=models.CASCADE, related_name='carmodel_articles',blank=True, null=True, verbose_name='Модель')
-    vehicle = models.ForeignKey(Vehicle, on_delete=models.CASCADE, related_name='vehicle_articles',blank=True, null=True, verbose_name='Кузов')
+    service = TreeManyToManyField(Service, blank=True, verbose_name='Услуги')
+    carmodel = models.ForeignKey(CarModel, on_delete=models.CASCADE, related_name='carmodel_reviews',blank=True, null=True, verbose_name='Модель')
+    vehicle = models.ForeignKey(Vehicle, on_delete=models.CASCADE, related_name='vehicle_reviews',blank=True, null=True, verbose_name='Кузов')
     service_vehicle = models.ForeignKey(
         ServicesVehicle, 
         on_delete=models.CASCADE, 
-        related_name='servicevehicle_articles',
+        related_name='servicevehicle_reviews',
         blank=True, 
         null=True, 
         verbose_name='Кузов'
@@ -81,7 +81,7 @@ class Address(models.Model):
         verbose_name_plural = 'Адреса'
 
 class Phone(models.Model):
-    phone = models.IntegerField(max_length=11 , verbose_name='Номер телефона')
+    phone = models.IntegerField(verbose_name='Номер телефона')
 
     class Meta:
         verbose_name = 'Номер телефона'
@@ -103,7 +103,7 @@ class Worker(models.Model):
     photo = models.ImageField(upload_to='images/company_info/%Y/%m/%d/', blank=True, null=True, verbose_name='Фото')
     position = models.CharField(max_length=255, verbose_name='Должность')
     about = models.CharField(max_length=255, verbose_name='Должность')
-    service = TreeManyToManyField(Service, blank=True, null=True, verbose_name='Услуги')
+    service = TreeManyToManyField(Service, blank=True, verbose_name='Услуги')
     address = models.ManyToManyField(Address, verbose_name='Адресс')
 
     def __str__(self):

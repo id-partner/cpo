@@ -40,7 +40,7 @@ class Article(SEO):
     pub_date = models.DateTimeField(auto_now_add=True, verbose_name='Дата публикации')
     categories = models.ManyToManyField(Category, verbose_name='Категории')
     tags = models.ManyToManyField(Tag, verbose_name='Теги')
-    service = TreeManyToManyField(Service, blank=True, null=True, verbose_name='Услуги')
+    service = TreeManyToManyField(Service, blank=True, verbose_name='Услуги')
     carmodel = models.ForeignKey(
         CarModel, 
         on_delete=models.CASCADE, 

@@ -111,8 +111,8 @@ class Meta:
 class Vehicle(models.Model):
     name = models.CharField(max_length=255, verbose_name='Название')
     description = models.TextField(blank=True, verbose_name='Описание')
-    start_year = models.IntegerField(max_length=4, verbose_name='Год начала производства')
-    stop_year = models.IntegerField(max_length=4, blank=True, null=True, verbose_name='Год прекращения производства')
+    start_year = models.IntegerField(verbose_name='Год начала производства')
+    stop_year = models.IntegerField(blank=True, null=True, verbose_name='Год прекращения производства')
     carmodel = models.ForeignKey(CarModel, on_delete=models.CASCADE, related_name='carmodel_vehicles', verbose_name='Модель')
     image_model = models.ImageField(upload_to='image/services/%Y/%m/%d/', verbose_name='Логотип концерна')
     services = TreeManyToManyField(Service, verbose_name='Услуги')
@@ -148,7 +148,7 @@ class Engine(models.Model):
     fuel = models.CharField(max_length=255, choices=FUEL_CHOICES, verbose_name='Тип двигателя')
     horse_power = models.DecimalField(max_digits=19, decimal_places=2, verbose_name='Лошадиных сил')
     torque = models.DecimalField(max_digits=19, decimal_places=2, verbose_name='Лошадиных сил')
-    vehicle = models.ManyToManyField(Vehicle, on_delete=models.CASCADE, related_name='vehicle_engines', blank=True, null=True, verbose_name='Кузов')
+    vehicle = models.ManyToManyField(Vehicle, related_name='vehicle_engines', blank=True, verbose_name='Кузов')
 
     def __str__(self):
         return self.model
@@ -168,7 +168,7 @@ class Transmission(models.Model):
     model =  models.CharField(max_length=255, verbose_name='Модель')
     type = models.CharField(max_length=255, choices=TRANSMISSION_CHOICES, verbose_name='Тип КПП')
     vendor = models.CharField(max_length=255, blank=True, null=True, verbose_name='Производитель')
-    vehicle = models.ManyToManyField(Vehicle, on_delete=models.CASCADE, related_name='vehicle_transmissions', blank=True, null=True, verbose_name='Кузов')
+    vehicle = models.ManyToManyField(Vehicle, related_name='vehicle_transmissions', blank=True, verbose_name='Кузов')
 
     def __str__(self):
         return self.model
@@ -180,7 +180,7 @@ class Transmission(models.Model):
 
 class Drive(models.Model):
     type = models.CharField(max_length=255, verbose_name='Тип привода')
-    vehicle = models.ManyToManyField(Vehicle, on_delete=models.CASCADE, related_name='vehicle_transmissions', blank=True, null=True, verbose_name='Кузов')
+    vehicle = models.ManyToManyField(Vehicle, related_name='vehicle_drives', blank=True, verbose_name='Кузов')
 
     def __str__(self):
         return self.model
@@ -192,7 +192,7 @@ class Drive(models.Model):
 
 class Lead(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True, verbose_name='Имя')
-    phone = models.IntegerField(max_length=11 , verbose_name='Номер телефона')
+    phone = models.IntegerField(verbose_name='Номер телефона')
     url =  models.URLField(null=True, blank=True, verbose_name='Страница с которой пришла заявка')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
 
@@ -214,8 +214,8 @@ class ImageDesing(models.Model):
     )
     image = models.ImageField(upload_to='image/desing/%Y/%m/%d/', verbose_name='Фото для дизайна')
     position = models.CharField(max_length=25, choices=POSITION_CHOICES, verbose_name='Место размещения')
-    group = models.ManyToManyField(Group, on_delete=models.CASCADE, blank=True, null=True, verbose_name='Концерн')
-    brand = models.ManyToManyField(Brand, on_delete=models.CASCADE, blank=True, null=True, verbose_name='Марка')
+    group = models.ManyToManyField(Group, blank=True, verbose_name='Концерн')
+    brand = models.ManyToManyField(Brand, blank=True, verbose_name='Марка')
 
     class Meta:
         verbose_name = 'Изображение для оформления'
