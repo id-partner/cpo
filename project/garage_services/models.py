@@ -103,9 +103,9 @@ class CarModel(models.Model):
     def __str__(self):
         return self.name_ru
 
-class Meta:
-        verbose_name = 'Модель'
-        verbose_name_plural = 'Модели'
+    class Meta:
+            verbose_name = 'Модель'
+            verbose_name_plural = 'Модели'
 
 
 class Vehicle(models.Model):
