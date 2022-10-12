@@ -1,7 +1,6 @@
 from django.contrib import admin
 from .models import Service, Group, Brand, CarModel, Vehicle, ServicesVehicle, Engine, Transmission, Drive, Lead, ImageDesing
 
-# Register your models here.
 
 admin.site.register(Service)
 admin.site.register(Group)

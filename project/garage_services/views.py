@@ -3,4 +3,5 @@ from django.http import HttpResponse
 
 # Create your views here.
 def index(request):
-    return HttpResponse('Тестовая страница')
+    context = {}
+    return render(request, 'garage_services/index.html', context)
