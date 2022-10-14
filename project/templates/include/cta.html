@@ -1,0 +1,28 @@
+{% load static %}
+<!-- cta-->
+<section class=" repair">
+    <div class="container">
+        <div class="row">
+            <div class="repair_block justify-content-center d-flex align-items-center">
+                <div class="col-lg-7  col-xl-6  repair_left">
+                    <div class="repair_img">
+                        <img src="{% static '/images/Mockup.png' %}" alt="">
+                    </div>
+                </div>
+                <div class="col-xl-5 col-lg-5">
+                    <div class="service_description">Стоимость ремонта зависит от марки и модели VAG. Узнайте точную стоимость по телефону: <span> +7 (343) 311-42-17</span> или заполните форму ниже</div>
+                    <form method="post" class="service_form">
+                        <input class="repair_input d-block name" type="text" name="name" placeholder="Введите ваше имя:">
+                        <input  class="repair_input d-block tel" type="tel" data-tel-input placeholder="Введите номер телефона:" maxlength="18" placeholder="Введите номер телефона:">
+                        <div class="repair_button ">
+                            <button class="form_button ">Получить консультацию</button>
+                        </div>
+                        <p href="#" class="form_bottom_text">
+                            Нажимая на кнопку, вы принимаете <a href="#">пользовательское соглашение</a> и подтверждаете, что ознакомлены и согласны с <a href="#">политикой конфиденциальности</a> 
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

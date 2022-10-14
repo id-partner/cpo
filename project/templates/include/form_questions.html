@@ -1,0 +1,27 @@
+{% load static %}
+<!-- form qestions -->
+<section class="form_block">
+    <div class="container">
+        <div class="row myself_contact">
+            <div class="col-md-6">
+                <div class="myself_contact_img">
+                    <img class="special_img" src="{% static '/images/octava.png' %}" alt="">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <form method="post" class="form_car">
+                    <div class="form_text">Остались вопросы?
+                        Заполните форму заявки 
+                        и наш менеджер свяжется с Вами в течении 15 минут и ответит на все вопросы
+                    </div>
+                    <input class="name" type="text" name="name" placeholder="Введите ваше имя:">
+                    <input  class="tel" type="tel" data-tel-input placeholder="Введите номер телефона:" maxlength="18" placeholder="">
+                    <textarea class="tex" name="tex" placeholder="Задайте Ваш вопрос:"></textarea>
+                    <div class="button">
+                        <button class="form_button ">Задать вопрос</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
