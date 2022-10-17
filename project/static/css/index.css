@@ -1237,7 +1237,7 @@ body {
   z-index: 0;
 }
 .bg_brands{
-  background-image: url(../images/brand.png);
+  /* background-image: url(../images/brand.png); */
   background-repeat: no-repeat;
   background-position: calc(100% + 61px) 43px;
 }

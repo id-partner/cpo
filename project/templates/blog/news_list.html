@@ -1,0 +1,63 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block content %}  
+<div class="wrapper">
+    <div class="news">
+        <div class="container">
+            <div class="news_title">
+                <h2>Акции и новости</h2>
+            </div>
+            <div class="news_block">
+                <div class="item item_img">
+                    <img src="{% static 'images/news.png' %}" alt="">
+                </div>
+                <div class="item">
+                    <h3>Стоимость ремонта зависит от марки и модели VAG. <br> Узнайте точную стоимость по телефону: <span> +7 (343) 311-42-17</span> <br> или заполните форму ниже</h3>
+                    <p>Вам не придется ждать пока освободиться место под ремонт. Начинаем работу <br> над ремонтом или обслуживанием автомобиля уже 15 минут после приезда.</p>
+                    <div class="button_news">
+                        <a href="#">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+            <div class="news_block news_block2">
+                <div class="item item_img">
+                    <img src="{% static 'images/news.png' %}" alt="">
+                </div>
+                <div class="item ">
+                    <h3>Стоимость ремонта зависит от марки и модели VAG. <br> Узнайте точную стоимость по телефону: <span> +7 (343) 311-42-17</span> <br> или заполните форму ниже</h3>
+                    <p>Вам не придется ждать пока освободиться место под ремонт. Начинаем работу <br> над ремонтом или обслуживанием автомобиля уже 15 минут после приезда.</p>
+                    <div class="button_news">
+                        <a href="#">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+            <div class="news_block news_block_last">
+                <div class="item">
+                    <h3>Бесплатная диагностика по 23 пунктам при <br> первом визите в сервисный центр.</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit <br> amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor <br> purus non enim praesent </p>
+                    
+                </div>
+                <div class="item special">
+                    <div class="button_news">
+                        <a href="#">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+            <div class="pagination">
+                <button class="btn">
+                    <img src="{% static 'images/page_left.svg' %}" alt="">
+                </button>
+                <div class="pages">
+                    <a class="page">1</a>
+                    <a class="page active">2</a>
+                    <a class="page">3</a>
+                    
+                </div>
+                <button class="btn">
+                    <img src="{% static 'images/page_right.svg' %}" alt="">
+                </button>
+                </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

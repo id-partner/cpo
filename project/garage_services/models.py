@@ -96,7 +96,7 @@ class CarModel(models.Model):
     name_ru = models.CharField(max_length=255, blank=True, null=True, verbose_name='Название на русском')
     brand = models.ForeignKey(Brand, on_delete=models.CASCADE, related_name='brand_carmodels', verbose_name='Марка')
     description = models.TextField(blank=True, verbose_name='Описание')
-    image_model = models.ImageField(upload_to='image/services/%Y/%m/%d/', verbose_name='Логотип концерна')
+    image_model = models.ImageField(upload_to='image/services/%Y/%m/%d/', verbose_name='Изображение модели')
     services = TreeManyToManyField(Service, verbose_name='Услуги')
     slug = models.SlugField(max_length=255, unique=True)
 
@@ -114,7 +114,7 @@ class Vehicle(models.Model):
     start_year = models.IntegerField(verbose_name='Год начала производства')
     stop_year = models.IntegerField(blank=True, null=True, verbose_name='Год прекращения производства')
     carmodel = models.ForeignKey(CarModel, on_delete=models.CASCADE, related_name='carmodel_vehicles', verbose_name='Модель')
-    image_model = models.ImageField(upload_to='image/services/%Y/%m/%d/', verbose_name='Логотип концерна')
+    image_model = models.ImageField(upload_to='image/services/%Y/%m/%d/', verbose_name='Изображение кузова')
     services = TreeManyToManyField(Service, verbose_name='Услуги')
     slug = models.SlugField(max_length=255, unique=True)
 
@@ -210,12 +210,15 @@ class ImageDesing(models.Model):
         ('FIRST', 'Первый экран'),
         ('FORM_1', 'Форма заявки 1'),
         ('WHY_ARE_WE', 'Мочему мы'),
-        ('FORM_QUESTIONS', 'Остались вопросы')
+        ('FORM_QUESTIONS', 'Остались вопросы'),
+        ('LOGO_BG', 'Логотип на бекграунд'),
     )
     image = models.ImageField(upload_to='image/desing/%Y/%m/%d/', verbose_name='Фото для дизайна')
     position = models.CharField(max_length=25, choices=POSITION_CHOICES, verbose_name='Место размещения')
     group = models.ManyToManyField(Group, blank=True, verbose_name='Концерн')
     brand = models.ManyToManyField(Brand, blank=True, verbose_name='Марка')
+    carmodel = models.ManyToManyField(CarModel, blank=True, verbose_name='Модель')
+    vehicle = models.ManyToManyField(Vehicle, blank=True, verbose_name='Кузов')
 
     class Meta:
         verbose_name = 'Изображение для оформления'

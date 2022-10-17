@@ -14,14 +14,15 @@
     <meta property="og:title" content="Марки группы VAG которые мы ремонтируем" />
     <meta property="og:description" content="Специализированный автосервис VAG в Екатеринбурге" />
     <!-- Шрифты -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.5.0/css/lightgallery-bundle.min.css" integrity="sha512-lgRFGedXdci5Ykc5Wbgd8QCzt3lBmnkWcMRAS8myln2eMCDwQBrHmjqvUj9rBcKOyWMC+EYJnvEppggw1v+m8Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Serif:ital,opsz,wght@0,8..144,100;0,8..144,200;0,8..144,300;0,8..144,400;0,8..144,500;0,8..144,600;0,8..144,700;0,8..144,800;0,8..144,900;1,8..144,100;1,8..144,200;1,8..144,300;1,8..144,400;1,8..144,500;1,8..144,600;1,8..144,700;1,8..144,800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{%static 'fonts/formula/stylesheet.css' %}">
+    <link rel="stylesheet" href="{%static '/fonts/formula/stylesheet.css' %}">
     <!-- Мои стили -->
-    <link rel="stylesheet" href="{%static 'css/index.css' %}">
+    <link rel="stylesheet" href="{%static '/css/index.css' %}">
     <title>index</title>
 </head>
 <body>
@@ -33,33 +34,24 @@
         {%block content%}
         {% endblock content%}
 
-        {% include 'include/advantages.html'%}
-        {% include 'include/cta.html'%}
-        {% include 'include/reviews.html'%}
-        {% include 'include/certificate.html'%}
-        {% include 'garage_services/include/step.html'%}
-        {% include 'include/gallery.html'%}
-        {% include 'garage_services/include/payment.html'%}
-        {% include 'include/workers.html'%}
-        {% include 'include/partners.html'%}
-        {% include 'include/about.html'%}
         {% include 'include/form_questions.html'%}
         {% include 'include/map.html'%}
         {% include 'include/footer.html'%}
     </div>
 
      {% include 'include/modal.html'%}
-    <!-- Juqery -->
-    <script src="{%static '/libs/jquery-3.6.0.min.js' %}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
-    <script src="{%static '/scripts/phoneinput.js' %}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.js"></script>
+     <script src="{% static '/libs/jquery-3.6.0.min.js' %}"></script>
+     <script src="{% static '/libs/jquery.inputmask.min.js' %}"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.5.0/plugins/zoom/lg-zoom.min.js" integrity="sha512-5kOfZonUGdOM0k5LCWttgUTvxceTa3DCwYtH3alvvE+oULFgoIN11oMIoubI1HcOXOmGDuuMvi00Px0HwHZsaQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.5.0/plugins/thumbnail/lg-thumbnail.min.js" integrity="sha512-cavMj99wBO8HNDcMfXf1r6SGMFyrNYxq/Wle3vqeRNRHvlwvq2GRgwqQkPGxkXGXVa30WfF9bHEZmFK7T/Ya7g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.5.0/lightgallery.min.js" integrity="sha512-FDbnUqS6P7md6VfBoH57otIQB3rwZKvvs/kQ080nmpK876/q4rycGB0KZ/yzlNIDuNc+ybpu0HV3ePdUYfT5cA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+     <script src="{% static '/scripts/phoneinput.js' %}"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+     <!-- Bootstrap -->
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    <!-- Swipper -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
-    <!-- Bootstrap -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
-   <!-- Swipper -->
-   <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
-   <script src="{%static '/scripts/scripts.js' %}"></script>
-
-</body>
+    <script src="{% static '/scripts/scripts.js' %}"></script>
 </html>

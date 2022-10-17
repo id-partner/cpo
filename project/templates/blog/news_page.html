@@ -1,0 +1,112 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block content %} 
+<!-- technical service section  -->
+<section class="technic_service">
+    <div class="container">
+        <div class="technic_title">Ремонт машины с описанием и ценами</div>
+        <div class="technic_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Egestas elit pellentesque quisque sed feugiat aliquam. Faucibus morbi mauris tortor tristique enim. Eu nisi, lectus amet nisi nec tempor dui. Duis quis faucibus diam gravida.</div>
+            <div class="technic_img_block">
+                <div class="row ">
+                    <div class="col-xl-9 col-md-8 ">
+                        <div class="technic_left_img">
+                            <img src="{% static '/images/technic_left.png' %}" alt="" class="technic_left">
+                        </div>
+                    </div>
+                
+                        <div class="col-xl-3 col-md-4 ">
+                            <div class="services_slider_blockk">
+                                <div class="block_item"  id="lightgallery">
+                                    <a href="{% static '/images/technic_left.png' %}" data-lg-size="1024-800" class="block_item_img">
+                                        <img src="{% static '/images/technic1.png' %}" alt="" class="block_item_img">
+                                    </a>
+                                    <a href="{% static '/images/technic_left.png' %}" data-lg-size="1024-800" class="block_item_img">
+                                        <img src="{% static '/images/technic1.png' %}" alt="" class="block_item_img">
+                                    </a>
+                                    <a href="{% static '/images/technic_left.png' %}" data-lg-size="1024-800">
+                                        <img src="{% static '/images/technic1.png' %}" alt="" class="block_item_img block_item_img2 block_rt1">
+                                    </a>
+                                        
+                                    <a href="{% static '/images/technic_left.png' %}" data-lg-size="1024-800">
+                                        <img src="{% static '/images/technic1.png' %}" alt="" class="block_item_img block_item_img2 block_rt1">
+                                    </a>
+                                    <a href="{% static '/images/technic_left.png' %}" data-lg-size="1024-800">
+                                        <img src="{% static '/images/technic1.png' %}" alt="" class="block_item_img block_item_img2 block_rt1">
+                                    </a>
+                                    <a href="{% static '/images/technic_left.png' %}" data-lg-size="1024-800">
+                                        <img src="{% static '/images/technic1.png' %}" alt="" class="block_item_img block_item_img2 block_rt1">
+                                    </a>
+                                    
+                                        <a href="{% static '/images/technic_left.png' %}" class="block_item_img block_last_gallery" data-lg-size="1024-800">
+                                            <span  class="click_light">Еще 3</span>
+                                            <img src="{% static '/images/technic1.png' %}" alt="" class="block_item_img block_item_img2">
+                                        </a>
+                                        
+                                    
+                                    
+                                </div>
+                                
+                            </div>
+                        </div>
+                
+                </div>
+            </div>
+            
+            <p class="technic_desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Egestas elit pellentesque quisque sed feugiat aliquam. Faucibus morbi mauris tortor tristique enim. Eu nisi, lectus amet nisi nec tempor dui. Duis quis faucibus diam gravida.</p>
+            <p class="technic_desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Egestas elit pellentesque quisque sed feugiat aliquam. Faucibus morbi mauris tortor tristique enim. Eu nisi, lectus amet nisi nec tempor dui. Duis quis faucibus diam gravida.</p>
+        </div>
+</section>
+
+<!-- Portfolio -->
+<section class="portfolio">
+    <div class="container">
+        <div class="portfolio_title">Другие работы</div>
+        <div class="swipper work_slider">
+            <div class="swiper-wrapper ">
+                <div class="swiper-slide">
+                    <div class="portfolio_item">
+                        <a href="#"> <img src="{% static '/images/technic_slide1.png' %}" alt=""></a>
+                        <div class="portfolio_des">Ремонт Audi A6</div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="portfolio_item">
+                        <a href="#"> <img src="{% static '/images/technic_slide2.png' %}" alt=""></a>
+                        <div class="portfolio_des">Замена ступичного подшипника</div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="portfolio_item">
+                        <a href="#"> <img src="{% static '/images/technic_slide3.png' %}" alt=""></a>
+                        <div class="portfolio_des">Ремонт Фольксваген</div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="portfolio_item">
+                        <a href="#">  <img src="{% static '/images/technic_slide4.png' %}" alt=""></a>
+                        <div class="portfolio_des">Ремонт Audi A6</div>
+                    </div>
+                </div>
+                
+            </div>
+            <!-- If we need navigation buttons -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+        
+    </div>
+</section>
+
+{% include 'include/cta.html'%}
+{% include 'include/reviews.html'%}
+{% include 'include/certificate.html'%}
+{% include 'garage_services/include/step.html'%}
+{% include 'include/gallery.html'%}
+{% include 'garage_services/include/payment.html'%}
+{% include 'include/workers.html'%}
+{% include 'include/partners.html'%}
+{% include 'include/about.html'%}
+
+
+{% endblock content %} 
+ 
