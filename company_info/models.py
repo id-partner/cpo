@@ -31,7 +31,7 @@ class Review(models.Model):
     is_published = models.BooleanField(default=False, verbose_name='Опубликовать')
     rating = models.FloatField(verbose_name='Рейтинг', blank=True, null=True)
     photo = models.ImageField(upload_to='images/company_info/%Y/%m/%d/', blank=True, null=True, verbose_name='Фото автора')
-    source = models.ForeignKey(SourceReview, on_delete=models.CASCADE, related_name='source_reviews', blank=True, null=True, verbose_name='Кузов')
+    source = models.ForeignKey(SourceReview, on_delete=models.CASCADE, related_name='source_reviews', blank=True, null=True, verbose_name='Источник отзыва')
     service = TreeManyToManyField(Service, blank=True, verbose_name='Услуги')
     carmodel = models.ForeignKey(CarModel, on_delete=models.CASCADE, related_name='carmodel_reviews',blank=True, null=True, verbose_name='Модель')
     vehicle = models.ForeignKey(Vehicle, on_delete=models.CASCADE, related_name='vehicle_reviews',blank=True, null=True, verbose_name='Кузов')
@@ -41,7 +41,7 @@ class Review(models.Model):
         related_name='servicevehicle_reviews',
         blank=True, 
         null=True, 
-        verbose_name='Кузов'
+        verbose_name='Отдельная услуга'
     )
 
     def __str__(self):
@@ -90,7 +90,7 @@ class Phone(models.Model):
 
 class Contact(models.Model):
     address = models.ManyToManyField(Address, verbose_name='Адресс')
-    phone = models.ManyToManyField(Phone, verbose_name='Адресс') 
+    phone = models.ManyToManyField(Phone, verbose_name='Номер телефона') 
 
     class Meta:
         verbose_name = 'Контакная информация'
@@ -102,7 +102,7 @@ class Worker(models.Model):
     surname = models.CharField(max_length=255, verbose_name='Фамилия')
     photo = models.ImageField(upload_to='images/company_info/%Y/%m/%d/', blank=True, null=True, verbose_name='Фото')
     position = models.CharField(max_length=255, verbose_name='Должность')
-    about = models.CharField(max_length=255, verbose_name='Должность')
+    about = models.CharField(max_length=255, verbose_name='О сотруднике')
     service = TreeManyToManyField(Service, blank=True, verbose_name='Услуги')
     address = models.ManyToManyField(Address, verbose_name='Адресс')
 
