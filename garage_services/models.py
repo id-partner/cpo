@@ -128,13 +128,16 @@ class Vehicle(models.Model):
 
 class ServicesVehicle(SEO):
     vehicle = models.ForeignKey(Vehicle, on_delete=models.CASCADE, related_name='vehicle_services', verbose_name='Кузов')
-    service = models.ForeignKey(Service, on_delete=models.CASCADE, related_name='service_vehicles', verbose_name='Услуга')
+    service = TreeForeignKey(Service, on_delete=models.CASCADE, related_name='service_vehicles', verbose_name='Услуга')
     min_normochas = models.DecimalField(max_digits=19, decimal_places=2, verbose_name='Минимально нормочасов')
     normochas = models.DecimalField(max_digits=19, decimal_places=2, blank=True, null=True, verbose_name='Нормочасов')
 
     class Meta:
         verbose_name = 'Точная услуга'
         verbose_name_plural = 'Точные услуги'
+
+    class MPTTMeta:
+        parent_attr = 'service'
 
 
 class Engine(models.Model):

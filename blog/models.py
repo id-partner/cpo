@@ -48,7 +48,7 @@ class Article(SEO):
         blank=True, 
         null=True, 
         verbose_name='Модель'
-        )
+         )
     vehicle = models.ForeignKey(
         Vehicle, 
         on_delete=models.CASCADE, 
@@ -63,7 +63,7 @@ class Article(SEO):
         related_name='servicevehicle_articles',
         blank=True,
         null=True,
-        verbose_name='Кузов'
+        verbose_name='Точная услуга'
         )
     
 
@@ -73,6 +73,9 @@ class Article(SEO):
     class Meta:
         verbose_name = 'Запись'
         verbose_name_plural = 'Записи'
+
+    class MPTTMeta:
+        parent_attr = 'service_vehicle'
 
 
 
