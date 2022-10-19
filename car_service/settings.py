@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'mptt',
     'debug_toolbar',
+    'django_summernote',
 ]
 
 MIDDLEWARE = [

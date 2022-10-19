@@ -48,7 +48,7 @@ class Article(SEO):
         blank=True, 
         null=True, 
         verbose_name='Модель'
-    )
+        )
     vehicle = models.ForeignKey(
         Vehicle, 
         on_delete=models.CASCADE, 
@@ -56,9 +56,15 @@ class Article(SEO):
         blank=True, 
         null=True, 
         verbose_name='Кузов'
-    )
-    service_vehicle = models.ForeignKey(ServicesVehicle, on_delete=models.CASCADE, related_name='servicevehicle_articles',
-                                    blank=True, null=True, verbose_name='Кузов')
+        )
+    service_vehicle = models.ForeignKey(
+        ServicesVehicle,
+        on_delete=models.CASCADE,
+        related_name='servicevehicle_articles',
+        blank=True,
+        null=True,
+        verbose_name='Кузов'
+        )
     
 
     def __str__(self):

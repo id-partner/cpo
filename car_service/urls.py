@@ -25,6 +25,7 @@ urlpatterns = [
     path('', include('garage_services.urls')),
     path('blog/', include('blog.urls')),
     path('admin/', admin.site.urls),
+    path('summernote/', include('django_summernote.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_URL)
 
 
