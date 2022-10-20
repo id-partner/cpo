@@ -6,53 +6,13 @@
             <h2>Наши партнеры</h2>
         </div>
         <div class="row">
+            {% for parnter in partners %}
             <div class="col-lg-3 col-6">
                 <div class="google_item d-flex justify-content-center align-items-center">
-                    <img src="{% static '/images/google.png' %}" alt="">
+                    <img src="{{ parnter.logo.url }}" alt="">
                 </div>
             </div>
-
-            <div class="col-lg-3 col-6">
-                <div class="google_item d-flex justify-content-center align-items-center">
-                    <img src="{% static '/images/2GIS.png' %}" alt="">
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-6">
-                <div class="google_item d-flex justify-content-center align-items-center">
-                    <img src="{% static '/images/google.png' %}" alt="">
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-6">
-                <div class="google_item d-flex justify-content-center align-items-center">
-                    <img src="{% static '/images/2GIS.png' %}" alt="">
-                </div>
-            </div>
-            <!-- second row -->
-            <div class="col-lg-3 col-6">
-                <div class="google_item d-flex justify-content-center align-items-center">
-                    <img src="{% static '/images/2GIS.png' %}" alt="">
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-6">
-                <div class="google_item d-flex justify-content-center align-items-center">
-                    <img src="{% static '/images/google.png' %}" alt="">
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-6">
-                <div class="google_item d-flex justify-content-center align-items-center">
-                    <img src="{% static '/images/2GIS.png' %}" alt="">
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-6">
-                <div class="google_item d-flex justify-content-center align-items-center">
-                    <img src="{% static '/images/google.png' %}" alt="">
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </section>

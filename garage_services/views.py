@@ -1,10 +1,25 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Group
+from company_info.models import Gallery, Partner
 
 
 def index_handler(request):
-    context = {}
+    # vag = Group.objects(filter='Vag')
+    gallery = Gallery.objects.all()
+    partners = Partner.objects.all()
+    context = {
+        'name_en': 'VAG',
+        'name_ru': 'ВАГ',
+        'services': 'Услуги',
+        'brands': 'Бренды',
+        'reviews': 'отзывы',
+        'gallery': gallery,
+        'partners': partners,
+
+    }
     return render(request, 'garage_services/group_page.html', context)
+
 
 def brand_handler(request):
     context = {}

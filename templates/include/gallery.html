@@ -11,17 +11,13 @@
         <div class=" swipper gallery_slider">
             <!-- Additional required wrapper -->
             <div class="swiper-wrapper gallery_slider_wrapper">
-            <!-- Slides -->
-            <div class="swiper-slide gallery_slide">
-                <img src="{% static '/images/slider-1.png' %}" alt="" class="gallery_slide_img">
-            </div>
-            <div class="swiper-slide gallery_slide">
-                <img src="{% static '/images/slider-2.png' %}" alt="" class="gallery_slide_img">
-            </div>
-            <div class="swiper-slide gallery_slide">
-                <img src="{% static '/images/slider-3.png' %}" alt="" class="gallery_slide_img">
-            </div>
-            ...
+                <!-- Slides -->
+                {% for i in gallery %}
+                <div class="swiper-slide gallery_slide">
+                    <img src="{{ i.image.url }}" alt="" class="gallery_slide_img">
+                </div>
+                
+                {% endfor %}
             </div>
             
         
