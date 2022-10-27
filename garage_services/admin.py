@@ -27,6 +27,10 @@ class VehicleAdmin(SummernoteModelAdmin):
         'description',
         )
 
+class ImageDesingAdmin():
+    # TODO: отображение в админке
+    pass
+
 
 admin.site.register(Service, ServiceAdmin)
 admin.site.register(Group, GroupAdmin)
