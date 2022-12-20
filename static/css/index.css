@@ -497,17 +497,16 @@ height: 700px;
   line-height: 22px;
   text-align: center;
   color: #000000;
-  margin-top: 15px;
+  margin-top: 20px;
 }
 .brands_repair .car_section .item span {
   position: absolute;
   top: 0;
-  right: -38px;
   z-index: -2;
   font-weight: 700;
-  font-size: 68.7273px;
-  line-height: 84px;
-  text-align: right;
+  font-size: 60px;
+  line-height: 80px;
+  text-align: center;
   color: #D7D7D7;
 }
 .brands_repair .car_section .item .span_lll {

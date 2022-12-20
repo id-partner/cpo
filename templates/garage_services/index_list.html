@@ -81,26 +81,28 @@
         <div class="row justify-content-center">
             <div class="col-lg-6 col-sm-10">
                     <div class="accordion" id="accordionExample">
+
+                        {% for service in services%}
                         <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingOne">
-                                <button class="accordion-button d-flex gap-sm-3 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                <img src="{% static '/images/accordion1.png' %}" alt="">
-                                <span>Техническое обслуживание</span>
+                            <h3 class="accordion-header" id="headingOne">
+                                <button class="accordion-button d-flex gap-sm-3 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#{{service.slug}}" aria-expanded="false" aria-controls="{{service.slug}}">
+                                <img src="{{service.icon.url}}" alt="{{service.name}}">
+                                <span>{{service.name}}</span>
                                 </button>
-                            </h2>
-                            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                            </h3>
+                            <div id="{{service.slug}}" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
-                                    
                                     <div class="service_bottom_block">
                                         <div class="accordion accordion-flush" id="tex_obs">
 
+                                            {% for subservice in service.child_category.all%}
                                             <div class="accordion-item">
-                                                <h2 class="accordion-header" id="tex_head_1">
-                                                <button class="accordion-button collapsed bg_color" type="button" data-bs-toggle="collapse" data-bs-target="#tex_obs_1" aria-expanded="false" aria-controls="tex_obs_1">
-                                                    <span>Замена масла в двигателе</span>
+                                                <h4 class="accordion-header" id="tex_head_1">
+                                                <button class="accordion-button collapsed bg_color" type="button" data-bs-toggle="collapse" data-bs-target="#{{ subservice.slug }}" aria-expanded="false" aria-controls="{{ subservice.slug }}1">
+                                                    <span>{{ subservice.name }}</span>
                                                 </button>
-                                                </h2>
-                                                <div id="tex_obs_1" class="accordion-collapse collapse" aria-labelledby="tex_head_1" data-bs-parent="#tex_obs">
+                                                </h4>
+                                                <div id="{{ subservice.slug }}" class="accordion-collapse collapse" aria-labelledby="tex_head_1" data-bs-parent="#tex_obs">
                                                 <div class="accordion-body">
                                                     <div class="service_block">
                                                         
@@ -125,418 +127,61 @@
                                                 </div>
                                                 </div>
                                             </div>
+                                            {%endfor%}  
 
-                                            <div class="accordion-item">
-                                                <h2 class="accordion-header" id="tex_head_2">
-                                                    <button class="accordion-button collapsed bg_color" type="button" data-bs-toggle="collapse" data-bs-target="#tex_obs_2" aria-expanded="false" aria-controls="tex_obs_2">
-                                                        <span>ТО АКПП</span>
-                                                    </button>
-                                                </h2>
-                                                <div id="tex_obs_2" class="accordion-collapse collapse" aria-labelledby="tex_head_2" data-bs-parent="#tex_obs">
-                                                    <div class="accordion-body">
-                                                        <div class="service_block">
-                                                            
-                                                            <div class="service_item">
-                                                                <p>Замена масла в двигателе</p>
-                                                                <span>От 1000₽</span>
-                                                                <a href="#">Записаться</a>
-                                                            </div>
-                                                            <div class="service_item">
-                                                                <p>Замена масла в двигателе</p>
-                                                                <span>От 1000₽</span>
-                                                                <a href="#">Записаться</a>
-                                                            </div>
-                                                            <div class="service_item">
-                                                                <p>Замена масла в двигателе</p>
-                                                                <span>От 1000₽</span>
-                                                                <a href="#">Записаться</a>
-                                                            </div>
-                                                        
-                                                            
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                </div>
-                                            
-                                            </div>
+                                        </div>
                                         
                                     </div>
                                     
                                 </div>
                             </div>
                         </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingTwo">
-                            <button class="accordion-button d-flex gap-sm-3 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                <img src="{% static '/images/accordion3.png' %}" alt="">
-                                <span>Ремонт трансмиссии</span>
-                                </button>
-                            </h2>
-                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <div class="service_bottom_block">
-                                    <div class="accordion accordion-flush" id="tex_obst">
-
-                                        <div class="accordion-item">
-                                            <h2 class="accordion-header" id="tex_head_4">
-                                            <button class="accordion-button collapsed bg_color" type="button" data-bs-toggle="collapse" data-bs-target="#tex_obs_4" aria-expanded="false" aria-controls="tex_obs_4">
-                                                <span>Замена масла в двигателе</span>
-                                            </button>
-                                            </h2>
-                                            <div id="tex_obs_4" class="accordion-collapse collapse" aria-labelledby="tex_head_4" data-bs-parent="#tex_obst">
-                                            <div class="accordion-body">
-                                                <div class="service_block">
-                                                    
-                                                    <div class="service_item">
-                                                        <p>Замена масла в двигателе</p>
-                                                        <span>От 1000₽</span>
-                                                        <a href="#">Записаться</a>
-                                                    </div>
-                                                    <div class="service_item">
-                                                        <p>Замена масла в двигателе</p>
-                                                        <span>От 1000₽</span>
-                                                        <a href="#">Записаться</a>
-                                                    </div>
-                                                    <div class="service_item">
-                                                        <p>Замена масла в двигателе</p>
-                                                        <span>От 1000₽</span>
-                                                        <a href="#">Записаться</a>
-                                                    </div>
-                                                    
-                                                    
-                                                </div>
-                                            </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="accordion-item">
-                                            <h2 class="accordion-header" id="tex_head_5">
-                                                <button class="accordion-button collapsed bg_color" type="button" data-bs-toggle="collapse" data-bs-target="#tex_obs_5" aria-expanded="false" aria-controls="tex_obs_5">
-                                                    <span>ТО АКПП</span>
-                                                </button>
-                                            </h2>
-                                            <div id="tex_obs_5" class="accordion-collapse collapse" aria-labelledby="tex_head_5" data-bs-parent="#tex_obst">
-                                                <div class="accordion-body">
-                                                    <div class="service_block">
-                                                        
-                                                        <div class="service_item">
-                                                            <p>Замена масла в двигателе</p>
-                                                            <span>От 1000₽</span>
-                                                            <a href="#">Записаться</a>
-                                                        </div>
-                                                        <div class="service_item">
-                                                            <p>Замена масла в двигателе</p>
-                                                            <span>От 1000₽</span>
-                                                            <a href="#">Записаться</a>
-                                                        </div>
-                                                        <div class="service_item">
-                                                            <p>Замена масла в двигателе</p>
-                                                            <span>От 1000₽</span>
-                                                            <a href="#">Записаться</a>
-                                                        </div>
-                                                    
-                                                        
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            </div>
-                                        
-                                        </div>
-                                    
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingThree">
-                            <button class="accordion-button d-flex gap-sm-3 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                <img src="{% static '/images/accordion5.png' %}" alt="">
-                                <span>Ремонт и обслуживание кондиционера</span>
-                                </button>
-                            </h2>
-                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <div class="service_bottom_block">
-                                    <div class="accordion accordion-flush" id="tex_kans">
-
-                                        <div class="accordion-item">
-                                            <h2 class="accordion-header" id="tex_head_8">
-                                            <button class="accordion-button collapsed bg_color" type="button" data-bs-toggle="collapse" data-bs-target="#tex_obs_8" aria-expanded="false" aria-controls="tex_obs_8">
-                                                <span>Замена масла в двигателе</span>
-                                            </button>
-                                            </h2>
-                                            <div id="tex_obs_8" class="accordion-collapse collapse" aria-labelledby="tex_head_8" data-bs-parent="#tex_kans">
-                                            <div class="accordion-body">
-                                                <div class="service_block">
-                                                    
-                                                    <div class="service_item">
-                                                        <p>Замена масла в двигателе</p>
-                                                        <span>От 1000₽</span>
-                                                        <a href="#">Записаться</a>
-                                                    </div>
-                                                    <div class="service_item">
-                                                        <p>Замена масла в двигателе</p>
-                                                        <span>От 1000₽</span>
-                                                        <a href="#">Записаться</a>
-                                                    </div>
-                                                    <div class="service_item">
-                                                        <p>Замена масла в двигателе</p>
-                                                        <span>От 1000₽</span>
-                                                        <a href="#">Записаться</a>
-                                                    </div>
-                                                    
-                                                    
-                                                </div>
-                                            </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="accordion-item">
-                                            <h2 class="accordion-header" id="tex_head_9">
-                                                <button class="accordion-button collapsed bg_color" type="button" data-bs-toggle="collapse" data-bs-target="#tex_obs_9" aria-expanded="false" aria-controls="tex_obs_9">
-                                                    <span>ТО АКПП</span>
-                                                </button>
-                                            </h2>
-                                            <div id="tex_obs_9" class="accordion-collapse collapse" aria-labelledby="tex_head_9" data-bs-parent="#tex_kans">
-                                                <div class="accordion-body">
-                                                    <div class="service_block">
-                                                        
-                                                        <div class="service_item">
-                                                            <p>Замена масла в двигателе</p>
-                                                            <span>От 1000₽</span>
-                                                            <a href="#">Записаться</a>
-                                                        </div>
-                                                        <div class="service_item">
-                                                            <p>Замена масла в двигателе</p>
-                                                            <span>От 1000₽</span>
-                                                            <a href="#">Записаться</a>
-                                                        </div>
-                                                        <div class="service_item">
-                                                            <p>Замена масла в двигателе</p>
-                                                            <span>От 1000₽</span>
-                                                            <a href="#">Записаться</a>
-                                                        </div>
-                                                    
-                                                        
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            </div>
-                                        
-                                        </div>
-                                    
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingThree">
-                                <button class="accordion-button d-flex gap-sm-3 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                    <img src="{% static '/images/accordion7.png' %}" alt="">
-                                    <span>Ремонт системы охлаждения</span>
-                                    </button>
-                            </h2>
-                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                <div class="service_bottom_block">
-                                    <div class="accordion accordion-flush" id="tex_sist">
-
-                                        <div class="accordion-item">
-                                            <h2 class="accordion-header" id="tex_head_10">
-                                            <button class="accordion-button collapsed bg_color" type="button" data-bs-toggle="collapse" data-bs-target="#tex_obs_10" aria-expanded="false" aria-controls="tex_obs_10">
-                                                <span>Замена масла в двигателе</span>
-                                            </button>
-                                            </h2>
-                                            <div id="tex_obs_10" class="accordion-collapse collapse" aria-labelledby="tex_head_10" data-bs-parent="#tex_sist">
-                                            <div class="accordion-body">
-                                                <div class="service_block">
-                                                    
-                                                    <div class="service_item">
-                                                        <p>Замена масла в двигателе</p>
-                                                        <span>От 1000₽</span>
-                                                        <a href="#">Записаться</a>
-                                                    </div>
-                                                    <div class="service_item">
-                                                        <p>Замена масла в двигателе</p>
-                                                        <span>От 1000₽</span>
-                                                        <a href="#">Записаться</a>
-                                                    </div>
-                                                    <div class="service_item">
-                                                        <p>Замена масла в двигателе</p>
-                                                        <span>От 1000₽</span>
-                                                        <a href="#">Записаться</a>
-                                                    </div>
-                                                    
-                                                    
-                                                </div>
-                                            </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="accordion-item">
-                                            <h2 class="accordion-header" id="tex_head_11">
-                                                <button class="accordion-button collapsed bg_color" type="button" data-bs-toggle="collapse" data-bs-target="#tex_obs_11" aria-expanded="false" aria-controls="tex_obs_11">
-                                                    <span>ТО АКПП</span>
-                                                </button>
-                                            </h2>
-                                            <div id="tex_obs_11" class="accordion-collapse collapse" aria-labelledby="tex_head_11" data-bs-parent="#tex_sist">
-                                                <div class="accordion-body">
-                                                    <div class="service_block">
-                                                        
-                                                        <div class="service_item">
-                                                            <p>Замена масла в двигателе</p>
-                                                            <span>От 1000₽</span>
-                                                            <a href="#">Записаться</a>
-                                                        </div>
-                                                        <div class="service_item">
-                                                            <p>Замена масла в двигателе</p>
-                                                            <span>От 1000₽</span>
-                                                            <a href="#">Записаться</a>
-                                                        </div>
-                                                        <div class="service_item">
-                                                            <p>Замена масла в двигателе</p>
-                                                            <span>От 1000₽</span>
-                                                            <a href="#">Записаться</a>
-                                                        </div>
-                                                    
-                                                        
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            </div>
-                                        
-                                        </div>
-                                    
-                                </div>
-                                </div>
-                            </div>
-                        </div>
+                        {%endfor%}
                     </div>
             </div>
             <div class="col-lg-6 col-sm-10">
-                    <div class="accordion" id="accordionExample2">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingFive">
-                                <button class="accordion-button d-flex gap-sm-3 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                                    <img src="{% static '/images/accordion2.png' %}" alt="">
-                                    <span>Ремонт двигателя</span>
-                                    </button>
-                            </h2>
-                            <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample2">
-                                <div class="accordion-body">
+                <div class="accordion" id="accordionExample">
+
+                    {% for service in services%}
+                    <div class="accordion-item">
+                        <h3 class="accordion-header" id="headingOne">
+                            <button class="accordion-button d-flex gap-sm-3 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#{{service.slug}}{{ forloop.counter }}" aria-expanded="false" aria-controls="{{service.slug}}{{ forloop.counter }}">
+                            <img src="{{service.icon.url}}" alt="{{service.name}}">
+                            <span>{{service.name}}</span>
+                            </button>
+                        </h3>
+                        <div id="{{service.slug}}{{ forloop.counter }}" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
                                 <div class="service_bottom_block">
-                                    <div class="accordion accordion-flush" id="tex_dve">
+                                    <div class="accordion accordion-flush" id="tex_obs">
 
                                         <div class="accordion-item">
-                                            <h2 class="accordion-header" id="tex_head_13">
-                                            <button class="accordion-button collapsed bg_color" type="button" data-bs-toggle="collapse" data-bs-target="#tex_obs_13" aria-expanded="false" aria-controls="tex_obs_13">
-                                                <span>Замена масла в двигателе</span>
-                                            </button>
-                                            </h2>
-                                            <div id="tex_obs_13" class="accordion-collapse collapse" aria-labelledby="tex_head_13" data-bs-parent="#tex_dve">
+                                            <div id="{{service.slug}}{{ forloop.counter }}" class="accordion-collapse collapse" aria-labelledby="tex_head_1" data-bs-parent="#tex_obs">
                                             <div class="accordion-body">
                                                 <div class="service_block">
-                                                    
+                                                    {% for subservice in service.child_category.all%}
                                                     <div class="service_item">
-                                                        <p>Замена масла в двигателе</p>
-                                                        <span>От 1000₽</span>
+                                                        <p>{{ subservice.name }} </p>
+                                                        <span>От {{ subservice.min_normochas }}</span>
                                                         <a href="#">Записаться</a>
                                                     </div>
-                                                    <div class="service_item">
-                                                        <p>Замена масла в двигателе</p>
-                                                        <span>От 1000₽</span>
-                                                        <a href="#">Записаться</a>
-                                                    </div>
-                                                    <div class="service_item">
-                                                        <p>Замена масла в двигателе</p>
-                                                        <span>От 1000₽</span>
-                                                        <a href="#">Записаться</a>
-                                                    </div>
-                                                    
+                                                    {%endfor%} 
                                                     
                                                 </div>
                                             </div>
                                             </div>
                                         </div>
-
-                                        <div class="accordion-item">
-                                            <h2 class="accordion-header" id="tex_head_14">
-                                                <button class="accordion-button collapsed bg_color" type="button" data-bs-toggle="collapse" data-bs-target="#tex_obs_14" aria-expanded="false" aria-controls="tex_obs_14">
-                                                    <span>ТО АКПП</span>
-                                                </button>
-                                            </h2>
-                                            <div id="tex_obs_14" class="accordion-collapse collapse" aria-labelledby="tex_head_14" data-bs-parent="#tex_dve">
-                                                <div class="accordion-body">
-                                                    <div class="service_block">
-                                                        
-                                                        <div class="service_item">
-                                                            <p>Замена масла в двигателе</p>
-                                                            <span>От 1000₽</span>
-                                                            <a href="#">Записаться</a>
-                                                        </div>
-                                                        <div class="service_item">
-                                                            <p>Замена масла в двигателе</p>
-                                                            <span>От 1000₽</span>
-                                                            <a href="#">Записаться</a>
-                                                        </div>
-                                                        <div class="service_item">
-                                                            <p>Замена масла в двигателе</p>
-                                                            <span>От 1000₽</span>
-                                                            <a href="#">Записаться</a>
-                                                        </div>
-                                                    
-                                                        
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            </div>
                                         
-                                        </div>
+
+                                    </div>
                                     
                                 </div>
-                                </div>
-                            </div>
-                            </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingTwo">
-                            <button class="accordion-button d-flex gap-sm-3 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-                                <img src="{% static '/images/accordion4.png' %}" alt="">
-                                <span>Диагностика</span>
-                                </button>
-                            </h2>
-                            <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample2">
-                            <div class="accordion-body">
                                 
-                            </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingThree">
-                            <button class="accordion-button d-flex gap-sm-3 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
-                                <img src="{% static '/images/accordion6.png' %}" alt="">
-                                <span>Ремонт электрооборудования</span>
-                                </button>
-                            </h2>
-                            <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample2">
-                            <div class="accordion-body">
-                                
-                            </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingEight">
-                                <button class="accordion-button d-flex gap-sm-3 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
-                                    <img src="{% static '/images/accordion8.png' %}" alt="">
-                                    <span>Ремонт рулевого управления</span>
-                                    </button>
-                            </h2>
-                            <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample2">
-                                <div class="accordion-body">
-                                
-                                </div>
                             </div>
                         </div>
                     </div>
+                    {%endfor%}
+                </div>
             </div>
         </div>
 

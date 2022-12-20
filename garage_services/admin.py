@@ -1,31 +1,29 @@
 from django.contrib import admin
 from django_summernote.admin import SummernoteModelAdmin
+from mptt.admin import MPTTModelAdmin
 from .models import Service, Group, Brand, CarModel, Vehicle, ServicesVehicle, Engine, Transmission, Drive, Lead, ImageDesing
 
-class ServiceAdmin(SummernoteModelAdmin):
-    summernote_fields = (
-        'content',
-        )
+class ServiceAdmin(MPTTModelAdmin, SummernoteModelAdmin):
+    summernote_fields = ('content',)
+    list_display = ('name', 'in_menu', 'order',)
+    list_editable = ('in_menu', 'order')
+    prepopulated_fields = {'slug': ('name',)}
 
 class GroupAdmin(SummernoteModelAdmin):
-    summernote_fields = (
-        'description',
-        )
+    summernote_fields = ('description',)
+    prepopulated_fields = {'slug': ('name_en',)}
 
 class BrandAdmin(SummernoteModelAdmin):
-    summernote_fields = (
-        'description',
-        )
+    summernote_fields = ('description',)
+    prepopulated_fields = {'slug': ('name_en',)}
 
 class CarModelAdmin(SummernoteModelAdmin):
-    summernote_fields = (
-        'description',
-        )
+    summernote_fields = ('description',)
+    prepopulated_fields = {'slug': ('name_en',)}
 
 class VehicleAdmin(SummernoteModelAdmin):
-    summernote_fields = (
-        'description',
-        )
+    summernote_fields = ('description',)
+    prepopulated_fields = {'slug': ('name',)}
 
 class ImageDesingAdmin():
     # TODO: отображение в админке

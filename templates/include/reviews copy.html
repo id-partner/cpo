@@ -1,0 +1,328 @@
+{% load static %}
+<!-- reviews -->
+<section class="clients" >
+    <div class="container">
+        <div class="client_title">
+            <h2>Независимые отзывы наших любимых клиентов</h2>
+        </div>
+        <div class="brands">
+            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="pills-comment-tab" data-bs-toggle="pill" data-bs-target="#pills-comment" type="button" role="tab" aria-controls="pills-home" aria-selected="true" data-nextlink="pills-comment2-tab" data-nexttab="pills-comment2">
+                    <div class="client_item">
+                        <div class="main_img">
+                            <img src="{% static '/images/Yandex_logo.svg' %}" alt="">
+                        </div>
+                        <div class="marks justify-content-center d-flex align-items-center gap-2">
+                            <i class="fas fa-star text-warning mt-sm-2"></i>
+                            <p>4.5</p>
+                        </div>
+                    </div>
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pills-comment2-tab" data-bs-toggle="pill" data-bs-target="#pills-comment2" type="button" role="tab" aria-controls="pills-profile"  data-nextlink="pills-comment3-tab" data-nexttab="pills-comment3" aria-selected="false">
+                    <div class="client_item">
+                        <div class="main_img">
+                            <img src="{% static '/images/google-logo.png' %}" alt="">
+                        </div>
+                        <div class="marks justify-content-center d-flex align-items-center gap-2">
+                            <i class="fas fa-star text-warning mt-sm-2"></i>
+                            <p>4.5</p>
+                        </div>
+                    </div>
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pills-comment3-tab" data-bs-toggle="pill" data-bs-target="#pills-comment3" type="button" role="tab" aria-controls="pills-contact" data-nexttab="pills-comment4" data-nextlink="pills-comment4-tab" aria-selected="false">
+                    <div class="client_item">
+                        <div class="main_img">
+                            <img src="{% static '/images/2GIS_logo.svg.png' %}" alt="">
+                        </div>
+                        <div class="marks justify-content-center d-flex align-items-center gap-2">
+                            <i class="fas fa-star text-warning mt-sm-2"></i>
+                            <p>4.5</p>
+                        </div>
+                    </div>
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pills-comment4-tab" data-bs-toggle="pill" data-bs-target="#pills-comment4" type="button" role="tab" aria-controls="pills-contact" data-nextlink="pills-comment-tab" data-nexttab="pills-comment" aria-selected="false">
+                        <div class="client_item">
+                            <div class="main_img">
+                                <img src="{% static '/images/logo-flamp.jpg' %}" alt="">
+                            </div>
+                            <div class="marks justify-content-center d-flex align-items-center gap-2">
+                                <i class="fas fa-star text-warning mt-sm-2"></i>
+                                <p>4.5</p>
+                            </div>
+                        </div> 
+                    </button>
+                    </li>
+                </ul>
+                <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-comment" role="tabpanel" aria-labelledby="pills-home-tab">
+                    <div class="swipper comment_slider" >
+                        
+                        <div class="swiper-wrapper comments">
+                            <div class="swiper-slide mt-md-5">
+                                <div class="comment_block">
+                                    <div class="comment_item">
+                                        <div  itemprop="author" itemprop="comment" itemscope="" itemtype="https://schema.org/Comment" class="comment_main gap-2 align-items-center d-flex justify-content-between">
+                                            <div class="left">
+                                                <div class="name">
+                                                    <span  itemprop="name"><img src="{% static '/images/comment_img.png' %}" alt=""></span>
+                                                        Анна
+                                                    </div>
+                                            </div>
+                                            <div class="right mb-3 d-flex align-items-center gap-2">
+                                                <i class="fas fa-star text-warning mt-sm-2"></i>
+                                                <p itemprop="number">5</p>
+                                            </div>
+                                            <link itemprop="url" href="http://example.com/users/vasya">
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                    <div class="description">Хетели бы выразить огромную благодарность менеджеру отдела рефинансирования - Даньшиной Юлии ! Первый раз вижу такое отношение к клиентам и к своей работе ! Ответственнсть , сопереживание. У нас была не простая ситуация, требующая внимания. Мы все жтл пооучили в полном обьеме от Юлии ! Начиная со сбора документов и...</div>
+                                    <div itemprop="itemReviewed" itemscope itemtype="https://schema.org/Organization">
+                                        <meta itemprop="name" content="Центр правильного обслуживания">
+                                        <meta itemprop="telephone" content="123-45-12">
+                                        <link itemprop="url" href="https://example.ru/"/>
+                                        <meta itemprop="email" content="mail@example.ru">
+                                        <p itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+                                            <meta itemprop="addressLocality" content="Москва">
+                                            <meta itemprop="streetAddress" content="Тверская, 7">
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide mt-md-5">
+                                <div class="comment_block">
+                                    <div class="comment_item">
+                                        <div itemprop="author" itemscope itemtype="https://schema.org/Person" class="comment_main gap-2 align-items-center d-flex justify-content-between">
+                                            <div class="left">
+                                                <div class="name">
+                                                    <span itemprop="name"><img src="{% static '/images/comment_img.png' %}" alt=""></span>
+                                                        Анна
+                                                    </div>
+                                            </div>
+                                            <div class="right mb-3 d-flex align-items-center gap-2">
+                                                <i class="fas fa-star text-warning mt-sm-2"></i>
+                                                <p  itemprop="number">5</p>
+                                            </div>
+                                            <link itemprop="url" href="http://example.com/users/vasya">
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                    <div class="description">Хетели бы выразить огромную благодарность менеджеру отдела рефинансирования - Даньшиной Юлии ! Первый раз вижу такое отношение к клиентам и к своей работе ! Ответственнсть , сопереживание. У нас была не простая ситуация, требующая внимания. Мы все жтл пооучили в полном обьеме от Юлии ! Начиная со сбора документов и...</div>
+                                    <div itemprop="itemReviewed" itemscope itemtype="https://schema.org/Organization">
+                                        <meta itemprop="name" content="Центр правильного обслуживания">
+                                        <meta itemprop="telephone" content="123-45-12">
+                                        <link itemprop="url" href="https://example.ru/"/>
+                                        <meta itemprop="email" content="mail@example.ru">
+                                        <p itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+                                            <meta itemprop="addressLocality" content="Москва">
+                                            <meta itemprop="streetAddress" content="Тверская, 7">
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide mt-md-5">
+                                <div  class="comment_block">
+                                    <div class="comment_item">
+                                        <div itemprop="author" itemscope itemtype="https://schema.org/Person" class="comment_main gap-2 align-items-center d-flex justify-content-between">
+                                            <div class="left">
+                                                <div class="name">
+                                                    <span itemprop="name"><img src="{% static '/images/comment_img.png' %}" alt=""></span>
+                                                        Анна
+                                                    </div>
+                                            </div>
+                                            <div class="right mb-3 d-flex align-items-center gap-2">
+                                                <i class="fas fa-star text-warning mt-sm-2"></i>
+                                                <p itemprop="number">5</p>
+                                            </div>
+                                            <link itemprop="url" href="http://example.com/users/vasya">
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                    <div class="description">Хетели бы выразить огромную благодарность менеджеру отдела рефинансирования - Даньшиной Юлии ! Первый раз вижу такое отношение к клиентам и к своей работе ! Ответственнсть , сопереживание. У нас была не простая ситуация, требующая внимания. Мы все жтл пооучили в полном обьеме от Юлии ! Начиная со сбора документов и...</div>
+                                    <div itemprop="itemReviewed" itemscope itemtype="https://schema.org/Organization">
+                                        <meta itemprop="name" content="Центр правильного обслуживания">
+                                        <meta itemprop="telephone" content="123-45-12">
+                                        <link itemprop="url" href="https://example.ru/"/>
+                                        <meta itemprop="email" content="mail@example.ru">
+                                        <p itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+                                            <meta itemprop="addressLocality" content="Москва">
+                                            <meta itemprop="streetAddress" content="Тверская, 7">
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>     
+                            <!-- If we need navigation buttons -->
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="pills-comment2" role="tabpanel" aria-labelledby="pills-profile-tab">
+                    <div class="swipper comment_slider">
+                        <div class="swiper-wrapper comments">
+                            <div class="swiper-slide mt-md-5">
+                                <div class="comment_block">
+                                    <div class="comment_item">
+                                        <div class="comment_main gap-2 align-items-center d-flex justify-content-between">
+                                            <div class="left">
+                                                <div class="name">
+                                                    <span><img src="{% static '/images/comment_img.png' %}" alt=""></span>
+                                                    Настя
+                                                    </div>
+                                            </div>
+                                            <div class="right mb-3 d-flex align-items-center gap-2">
+                                                <i class="fas fa-star text-warning mt-sm-2"></i>
+                                                <p>5</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                    <div class="description">Хетели бы выразить огромную благодарность менеджеру отдела рефинансирования - Даньшиной Юлии ! Первый раз вижу такое отношение к клиентам и к своей работе ! Ответственнсть , сопереживание. У нас была не простая ситуация, требующая внимания. Мы все жтл пооучили в полном обьеме от Юлии ! Начиная со сбора документов и...</div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide mt-md-5">
+                                <div class="comment_block">
+                                    <div class="comment_item">
+                                        <div class="comment_main gap-2 align-items-center d-flex justify-content-between">
+                                            <div class="left">
+                                                <div class="name">
+                                                    <span><img src="{% static '/images/comment_img.png' %}" alt=""></span>
+                                                    Настя
+                                                    </div>
+                                            </div>
+                                            <div class="right mb-3 d-flex align-items-center gap-2">
+                                                <i class="fas fa-star text-warning mt-sm-2"></i>
+                                                <p>5</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                    <div class="description">Хетели бы выразить огромную благодарность менеджеру отдела рефинансирования - Даньшиной Юлии ! Первый раз вижу такое отношение к клиентам и к своей работе ! Ответственнсть , сопереживание. У нас была не простая ситуация, требующая внимания. Мы все жтл пооучили в полном обьеме от Юлии ! Начиная со сбора документов и...</div>
+                                </div>
+                            </div>
+                        </div>     
+                            <!-- If we need navigation buttons -->
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="pills-comment3" role="tabpanel" aria-labelledby="pills-contact-tab">
+                    <div class="swipper comment_slider">
+                        <div class="swiper-wrapper comments">
+                            <div class="swiper-slide mt-md-5">
+                                <div class="comment_block">
+                                    <div class="comment_item">
+                                        <div class="comment_main gap-2 align-items-center d-flex justify-content-between">
+                                            <div class="left">
+                                                <div class="name">
+                                                    <span><img src="{% static '/images/comment_img.png' %}" alt=""></span>
+                                                    Катя
+                                                    </div>
+                                            </div>
+                                            <div class="right mb-3 d-flex align-items-center gap-2">
+                                                <i class="fas fa-star text-warning mt-sm-2"></i>
+                                                <p>5</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                    <div class="description">Хетели бы выразить огромную благодарность менеджеру отдела рефинансирования - Даньшиной Юлии ! Первый раз вижу такое отношение к клиентам и к своей работе ! Ответственнсть , сопереживание. У нас была не простая ситуация, требующая внимания. Мы все жтл пооучили в полном обьеме от Юлии ! Начиная со сбора документов и...</div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide mt-md-5">
+                                <div class="comment_block">
+                                    <div class="comment_item">
+                                        <div class="comment_main gap-2 align-items-center d-flex justify-content-between">
+                                            <div class="left">
+                                                <div class="name">
+                                                    <span><img src="{% static '/images/comment_img.png' %}" alt=""></span>
+                                                    Катя
+                                                    </div>
+                                            </div>
+                                            <div class="right mb-3 d-flex align-items-center gap-2">
+                                                <i class="fas fa-star text-warning mt-sm-2"></i>
+                                                <p>5</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                    <div class="description">Хетели бы выразить огромную благодарность менеджеру отдела рефинансирования - Даньшиной Юлии ! Первый раз вижу такое отношение к клиентам и к своей работе ! Ответственнсть , сопереживание. У нас была не простая ситуация, требующая внимания. Мы все жтл пооучили в полном обьеме от Юлии ! Начиная со сбора документов и...</div>
+                                </div>
+                            </div>
+                        </div>     
+                            <!-- If we need navigation buttons -->
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="pills-comment4" role="tabpanel" aria-labelledby="pills-contact-tab">
+                    <div class="swipper comment_slider">
+                        <div class="swiper-wrapper comments">
+                            <div class="swiper-slide mt-md-5">
+                                <div class="comment_block">
+                                    <div class="comment_item">
+                                        <div class="comment_main gap-2 align-items-center d-flex justify-content-between">
+                                            <div class="left">
+                                                <div class="name">
+                                                    <span><img src="{% static '/images/comment_img.png' %}" alt=""></span>
+                                                        Андрей
+                                                    </div>
+                                            </div>
+                                            <div class="right mb-3 d-flex align-items-center gap-2">
+                                                <i class="fas fa-star text-warning mt-sm-2"></i>
+                                                <p>5</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                    <div class="description">Хетели бы выразить огромную благодарность менеджеру отдела рефинансирования - Даньшиной Юлии ! Первый раз вижу такое отношение к клиентам и к своей работе ! Ответственнсть , сопереживание. У нас была не простая ситуация, требующая внимания. Мы все жтл пооучили в полном обьеме от Юлии ! Начиная со сбора документов и...</div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide mt-md-5">
+                                <div class="comment_block">
+                                    <div class="comment_item">
+                                        <div class="comment_main gap-2 align-items-center d-flex justify-content-between">
+                                            <div class="left">
+                                                <div class="name">
+                                                    <span><img src="{% static '/images/comment_img.png' %}" alt=""></span>
+                                                    Андрей
+                                                    </div>
+                                            </div>
+                                            <div class="right mb-3 d-flex align-items-center gap-2">
+                                                <i class="fas fa-star text-warning mt-sm-2"></i>
+                                                <p>5</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                    <div class="description">Хетели бы выразить огромную благодарность менеджеру отдела рефинансирования - Даньшиной Юлии ! Первый раз вижу такое отношение к клиентам и к своей работе ! Ответственнсть , сопереживание. У нас была не простая ситуация, требующая внимания. Мы все жтл пооучили в полном обьеме от Юлии ! Начиная со сбора документов и...</div>
+                                </div>
+                            </div>
+                        </div>     
+                            <!-- If we need navigation buttons -->
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                    </div>
+                </div>
+                
+                </div>
+                
+            </div>      
+    </div>
+</section>

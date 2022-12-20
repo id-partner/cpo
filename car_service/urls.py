@@ -24,7 +24,7 @@ import debug_toolbar
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('summernote/', include('django_summernote.urls')),
-    path('blog/', include('blog.urls')),
+    path('blog', include('blog.urls')),
     path('', include('garage_services.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_URL)
 

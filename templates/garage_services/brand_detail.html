@@ -20,7 +20,7 @@
                                     </div>
                                 </div>
                                 <div class="hero_bg">
-                                    <img src="{{ first_bg.image.url }}" alt="img">
+                                    <img src="{{ first_bg.image.url }}" alt="avtoservice {{brand.name_en}}">
                                 </div>
                             </div>
                             <div class="col-xl-4 col-lg-5">
@@ -563,6 +563,26 @@
                 </div>
     </section>
 </main>
-{% include 'garage_services/include/models.html'%}
+<section class="brands_repair">
+    <div class="container">
+        <div class="title_skoda">
+            <h2>Модели марки {{brand.name_ru}} которые мы ремонтируем</h2>
+        </div>
+        <p class="mb-5">Наш автосервис специализируется на ремонте автомобилей группы VAG(ВАГ). Так мы можем поддерживать необходимый ассортимет запчастей и качественно выполнять ремонт и обслуживание автомобилей.</p>       
+        <div class="car_section">
+            <div class="row">
+                {% for model in models %}
+                <div class="col-6 col-sm-3 mb-5">
+                    <div class="item">
+                        <span>{{model.name_en}}</span>
+                        <a href="{% url 'model_detail' brand.slug model.slug %}"><img src="{{model.image_model.url}}" alt=""></a>
+                        <p>{{model.name_en}}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
 
 {% endblock content %}

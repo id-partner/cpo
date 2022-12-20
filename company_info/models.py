@@ -101,10 +101,10 @@ class Worker(models.Model):
     name = models.CharField(max_length=255, verbose_name='Имя')
     surname = models.CharField(max_length=255, verbose_name='Фамилия')
     photo = models.ImageField(upload_to='images/company_info/%Y/%m/%d/', blank=True, null=True, verbose_name='Фото')
-    position = models.CharField(max_length=255, verbose_name='Должность')
-    about = models.CharField(max_length=255, verbose_name='О сотруднике')
+    position = models.CharField(max_length=255, blank=True, null=True, verbose_name='Должность')
+    about = models.CharField(max_length=255, blank=True, null=True, verbose_name='О сотруднике')
     service = TreeManyToManyField(Service, blank=True, verbose_name='Услуги')
-    address = models.ManyToManyField(Address, verbose_name='Адресс')
+    address = models.ManyToManyField(Address, blank=True, verbose_name='Адресс')
 
     def __str__(self):
             return self.name

@@ -11,45 +11,25 @@
         <div class="worker_card">
             <div class="swipper worker_slider">
                 <div class="swiper-wrapper">
+                    {% autoescape off %}
+                    {% for worker in workers %}
                     <div class="swiper-slide">
-                    
                                 <div class="card_item d-flex bg-light">
                                     <div class="col-lg-5">
                                         <div class="card_img">
-                                            <img src="{% static '/images/alex.png' %}" alt="">
+                                            <img src="{{ worker.photo.url }}" alt="">
                                         </div>
                                     </div>
                                     <div class="col-lg-7">
                                         <div class="card_desc">
-                                            <div class="card_name">Александр</div>
-                                            <div class="card_about">Вы оставляете заявку или звоните нам. Наш менеджер проконсультирует Вас по стоимости работ и запчастей или запишет на бесплатную диагностику.
-                                                Для записи звоните по телефону: +7 (343) 311-42-35 
-                                            </div>
+                                            <div class="card_name">{{ worker.name }} {{ worker.surname }}</div>
+                                            <div class="card_about">{{ worker.position }} {{ worker.about }}</div>
                                         </div>
                                     </div>
                                 </div>
-                    
                     </div>
-                    <div class="swiper-slide">
-                        <div class="row">
-                            <div class="card_item d-flex bg-light">
-                                <div class="col-lg-5">
-                                    <div class="card_img">
-                                        <img src="{% static '/images/alex.png' %}" alt="">
-                                    </div>
-                                </div>
-                                <div class="col-lg-7">
-                                    <div class="card_desc">
-                                        <div class="card_name">Александр</div>
-                                        <div class="card_about">Вы оставляете заявку или звоните нам. Наш менеджер проконсультирует Вас по стоимости работ и запчастей или запишет на бесплатную диагностику.
-                                            Для записи звоните по телефону: +7 (343) 311-42-35 
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
+                    {% endfor %}
+                    {% endautoescape %}
                 </div>
                     <!-- If we need navigation buttons -->
                     <div class="swiper-button-prev"></div>

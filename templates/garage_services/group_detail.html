@@ -562,6 +562,29 @@
     </div>
 </section>
 
-{% include 'garage_services/include/brands copy.html'%}
-
+<section class="brands">
+    <div class="container">
+        <div class="brand_title">
+            <h2>Марки группы VAG которые мы ремонтируем</h2>
+        </div>
+        <div class="brand_description">Наш автосервис специализируется на ремонте автомобилей группы VAG(ВАГ). Так мы можем поддерживать необходимый ассортимет запчастей и качественно выполнять ремонт и обслуживание автомобилей.</div>
+        <div class="brand_images">
+            <ul class="nav nav-pills mb-3 tabs_brand" id="pills-tab" role="tablist">
+                {% for brand in brands %}
+                <li class="nav-item" role="presentation">
+                    <button {% if forloop.first %}class="nav-link active" {% else %} class="nav-link" {% endif %} id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">
+                    <div class="brand_item">
+                        <a href="{% url 'brand_detail' brand.slug %}"><img src="{{ brand.logo.url }}" alt=""></a>
+                        </div>
+                    </button>
+                </li>
+                {% endfor %}
+                </ul>
+                
+        </div>
+        
+        
+    </div>
+    
+</section>
 {% endblock content %}

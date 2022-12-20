@@ -11,7 +11,7 @@
                 <li class="nav-item" role="presentation">
                     <button {% if forloop.first %}class="nav-link active" {% else %} class="nav-link" {% endif %} id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">
                     <div class="brand_item">
-                        <a href="{% url 'brand_detail' group.slug brand.slug %}"><img src="{{ brand.logo.url }}" alt=""></a>
+                        <a href="{% url 'brand_detail' brand.slug %}"><img src="{{ brand.logo.url }}" alt=""></a>
                         </div>
                     </button>
                 </li>
